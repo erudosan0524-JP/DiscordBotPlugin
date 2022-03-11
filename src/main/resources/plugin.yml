@@ -1,5 +1,5 @@
 name: DiscordBotPlugin
 version: '${version}'
 main: tech.erudo.mc.discord.discordbotplugin.DiscordBotPlugin
-api-version: 1.18
+api-version: 1.17
 authors: [ erudo ]

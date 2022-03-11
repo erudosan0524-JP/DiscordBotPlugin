@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.+'
 }
 
 group = 'tech.erudo.mc.discord'
@@ -36,6 +37,13 @@ dependencies {
     implementation 'net.dv8tion:JDA:4.3.0_277'
 }
 
+shadowJar {
+    dependencies {
+        exclude(dependency('org.spigotmc:spigot-api:.*'))
+        exclude(dependency('org.projectlombok:lombok:.*'))
+    }
+}
+
 def targetJavaVersion = 8
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
@@ -51,6 +59,8 @@ tasks.withType(JavaCompile).configureEach {
         options.release = targetJavaVersion
     }
 }
+
+
 
 processResources {
     def props = [version: version]
