@@ -10,8 +10,14 @@ public class ChatListener extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent e) {
         String msg = e.getMessage().getContentRaw();
 
-        if(!e.getAuthor().isBot()) {
-            MessageManager.sendAll(e.getAuthor().getName(),msg);
+        if(!e.getAuthor().isBot()) {//メッセージ送信者がBOTじゃなかったら
+            if(e.getMessage().toString().startsWith("!")) {//!から始まる＝＞コマンド
+                int length = e.getMessage().toString().length();
+                String cmd = e.getMessage().toString().substring(1,length);
+
+            } else {
+                MessageManager.sendAll(e.getAuthor().getName(),msg);
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    jcenter()
     maven {
         name = 'spigotmc-repo'
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
@@ -35,6 +36,8 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 
     implementation 'net.dv8tion:JDA:4.3.0_277'
+
+    compileOnly 'com.jagrosh:jda-utilities:3.1.0'
 }
 
 shadowJar {
