@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.bukkit.plugin.java.JavaPlugin;
+import tech.erudo.mc.discord.discordbotplugin.discord.DiscordClient;
 import tech.erudo.mc.discord.discordbotplugin.discord.listener.ChatListener;
 import tech.erudo.mc.discord.discordbotplugin.listener.InteractListener;
 import tech.erudo.mc.discord.discordbotplugin.util.config.TokenConfig;
@@ -17,7 +18,7 @@ public final class DiscordBotPlugin extends JavaPlugin {
     @Getter
     private static DiscordBotPlugin instance;
 
-    private JDA jda = null;
+    private DiscordClient client;
 
     @Override
     public void onEnable() {
@@ -25,18 +26,8 @@ public final class DiscordBotPlugin extends JavaPlugin {
         instance = this;
 
         //BOTの設定
-        TokenConfig tokenConfig = new TokenConfig(this);
-        final String BOT_TOKEN = tokenConfig.getToken();
-
-        try {
-            jda = JDABuilder.createDefault(BOT_TOKEN, GatewayIntent.GUILD_MESSAGES)
-                    .setRawEventsEnabled(true)
-                    .addEventListeners(new ChatListener())
-                    .setActivity(Activity.playing("マインクラフト"))
-                    .build();
-        } catch (LoginException e) {
-            e.printStackTrace();
-        }
+        final TokenConfig tokenConfig = new TokenConfig(this);
+        client = new DiscordClient(tokenConfig.getToken(), tokenConfig.getGuildId());
 
         //Listenerの登録
         new InteractListener(getInstance());
@@ -45,6 +36,6 @@ public final class DiscordBotPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        jda.shutdownNow();
+        client.shutdown();
     }
 }
