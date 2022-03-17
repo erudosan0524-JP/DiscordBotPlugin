@@ -1,4 +1,4 @@
-package tech.erudo.mc.discord.discordbotplugin.listener.bukkit;
+package tech.erudo.mc.discord.discordbotplugin.listener;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
