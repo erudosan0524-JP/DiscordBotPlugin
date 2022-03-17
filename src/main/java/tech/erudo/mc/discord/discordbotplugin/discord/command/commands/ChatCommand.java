@@ -2,16 +2,20 @@ package tech.erudo.mc.discord.discordbotplugin.discord.command.commands;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import tech.erudo.mc.discord.discordbotplugin.discord.command.Command;
+import tech.erudo.mc.discord.discordbotplugin.util.MessageManager;
 
-public class HelloCommand implements Command {
+import java.util.Arrays;
 
+public class ChatCommand implements Command {
     @Override
     public String name() {
-        return "hello";
+        return "chat";
     }
 
     @Override
     public void execute(MessageReceivedEvent e, String[] args) {
-        e.getTextChannel().sendMessage("Hello!").queue();
+        if(args.length != 0) {
+            MessageManager.sendAll(Arrays.toString(args));
+        }
     }
 }

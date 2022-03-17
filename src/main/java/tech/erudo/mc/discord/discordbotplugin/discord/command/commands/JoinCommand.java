@@ -13,7 +13,7 @@ public class JoinCommand implements Command {
     }
 
     @Override
-    public void execute(MessageReceivedEvent e) {
+    public void execute(MessageReceivedEvent e, String[] args) {
         TextChannel channel = e.getTextChannel();
         if(!e.getGuild().getSelfMember().hasPermission(channel, Permission.VOICE_CONNECT)) {
             e.getTextChannel().sendMessage("I do not have permission to join a voice channel").queue();

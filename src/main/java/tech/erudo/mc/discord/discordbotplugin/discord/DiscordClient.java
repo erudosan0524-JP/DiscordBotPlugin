@@ -11,10 +11,14 @@ import tech.erudo.mc.discord.discordbotplugin.discord.listener.ChatListener;
 import tech.erudo.mc.discord.discordbotplugin.util.config.TokenConfig;
 
 import javax.security.auth.login.LoginException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DiscordClient {
     private JDA jda = null;
     private Long guildId = null;
+
+    private final List<Player> speakingPlayers = new ArrayList<>();
 
     public DiscordClient(String token, Long guildId) {
         this.guildId = guildId;
@@ -33,10 +37,14 @@ public class DiscordClient {
         }
     }
 
-    public void mute(Player player, boolean muted) {
+    public String mute(Player player, boolean muted) {
         Guild guild = this.getGuild();
+        if(guild == null) {
+            return "ギルドが見つかりませんでした";
+        }
 
 
+        return null;
     }
 
     public boolean isLogin() {
@@ -58,6 +66,5 @@ public class DiscordClient {
     public void shutdown() {
         jda.shutdownNow();
     }
-
 
 }

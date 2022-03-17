@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.bukkit.plugin.java.JavaPlugin;
+import tech.erudo.mc.discord.discordbotplugin.command.CommandManager;
 import tech.erudo.mc.discord.discordbotplugin.discord.DiscordClient;
 import tech.erudo.mc.discord.discordbotplugin.discord.listener.ChatListener;
 import tech.erudo.mc.discord.discordbotplugin.listener.InteractListener;
@@ -31,6 +32,10 @@ public final class DiscordBotPlugin extends JavaPlugin {
 
         //Listenerの登録
         new InteractListener(getInstance());
+
+        //コマンドの登録
+        CommandManager commandManager = new CommandManager(getInstance());
+        commandManager.setup();
 
     }
 

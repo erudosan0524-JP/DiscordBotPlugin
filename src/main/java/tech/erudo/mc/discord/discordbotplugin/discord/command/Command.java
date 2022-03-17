@@ -8,5 +8,5 @@ import java.util.Stack;
 public interface Command {
     String name();
 
-    void execute(MessageReceivedEvent e);
+    void execute(MessageReceivedEvent e, String[] args);
 }
