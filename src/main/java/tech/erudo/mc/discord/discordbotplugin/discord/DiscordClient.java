@@ -5,13 +5,13 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import org.bukkit.entity.Player;
-import tech.erudo.mc.discord.discordbotplugin.DiscordBotPlugin;
 import tech.erudo.mc.discord.discordbotplugin.discord.listener.ChatListener;
-import tech.erudo.mc.discord.discordbotplugin.util.config.TokenConfig;
 
 import javax.security.auth.login.LoginException;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
 public class DiscordClient {
@@ -27,7 +27,9 @@ public class DiscordClient {
 
     private void login(String token) {
         try {
-            jda = JDABuilder.createDefault(token, GatewayIntent.GUILD_MESSAGES)
+            jda = JDABuilder.createDefault(token, GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_VOICE_STATES)
+                    .disableCache(CacheFlag.EMOTE)
+                    .enableCache(CacheFlag.VOICE_STATE)
                     .setRawEventsEnabled(true)
                     .addEventListeners(new ChatListener())
                     .setActivity(Activity.playing("マインクラフト"))

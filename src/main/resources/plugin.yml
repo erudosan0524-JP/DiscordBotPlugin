@@ -3,3 +3,6 @@ version: '${version}'
 main: tech.erudo.mc.discord.discordbotplugin.DiscordBotPlugin
 api-version: 1.17
 authors: [ erudo ]
+commands:
+  discord:
+    description: This is Discord Commands

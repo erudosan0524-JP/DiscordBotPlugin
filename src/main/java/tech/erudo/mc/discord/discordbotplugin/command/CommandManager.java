@@ -24,15 +24,14 @@ public class CommandManager implements CommandExecutor {
     }
 
     public void setup() {
-        if(plugin.getCommand(mainCommand) == null) {
-            System.out.println("Command null");
-            return;
-        }
-
         plugin.getCommand(mainCommand).setExecutor(this);
 
         this.commands.add(new Help());
         this.commands.add(new Auth());
+
+        if(plugin.getCommand(mainCommand) == null) {
+            System.out.println("Command null");
+        }
     }
 
     @Override
