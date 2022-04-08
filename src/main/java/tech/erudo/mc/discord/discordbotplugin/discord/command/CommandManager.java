@@ -1,9 +1,8 @@
 package tech.erudo.mc.discord.discordbotplugin.discord.command;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import tech.erudo.mc.discord.discordbotplugin.discord.command.commands.ChatCommand;
-import tech.erudo.mc.discord.discordbotplugin.discord.command.commands.HelloCommand;
-import tech.erudo.mc.discord.discordbotplugin.discord.command.commands.JoinCommand;
+import org.checkerframework.checker.units.qual.A;
+import tech.erudo.mc.discord.discordbotplugin.discord.command.commands.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +24,8 @@ public class CommandManager {
         append(new HelloCommand());
         append(new JoinCommand());
         append(new ChatCommand());
+        append(new LeaveCommand());
+        append(new AuthCommand());
     }
 
     public void execute(String name) {

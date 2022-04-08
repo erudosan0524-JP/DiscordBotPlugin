@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import tech.erudo.mc.discord.discordbotplugin.command.subcommand.SubCommand;
 import tech.erudo.mc.discord.discordbotplugin.command.subcommand.subcommands.Auth;
 import tech.erudo.mc.discord.discordbotplugin.command.subcommand.subcommands.Help;
+import tech.erudo.mc.discord.discordbotplugin.command.subcommand.subcommands.Mute;
 
 import java.util.*;
 
@@ -28,6 +29,7 @@ public class CommandManager implements CommandExecutor {
 
         this.commands.add(new Help());
         this.commands.add(new Auth());
+        this.commands.add(new Mute());
 
         if(plugin.getCommand(mainCommand) == null) {
             System.out.println("Command null");
