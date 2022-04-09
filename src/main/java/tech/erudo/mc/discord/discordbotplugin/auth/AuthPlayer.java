@@ -1,6 +1,7 @@
 package tech.erudo.mc.discord.discordbotplugin.auth;
 
 import lombok.Data;
+import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import org.bukkit.entity.Player;
 
@@ -16,5 +17,10 @@ public class AuthPlayer {
         this.player = player;
         this.member = member;
     }
+
+    public void mute(boolean muted) {
+        this.member.mute(muted).queue();
+    }
+
 
 }

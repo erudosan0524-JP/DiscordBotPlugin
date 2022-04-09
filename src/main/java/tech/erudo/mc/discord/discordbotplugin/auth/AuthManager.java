@@ -1,5 +1,6 @@
 package tech.erudo.mc.discord.discordbotplugin.auth;
 
+import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import org.bukkit.entity.Player;
 
@@ -45,6 +46,7 @@ public class AuthManager {
 
         return null;
     }
+
 
 
 }

@@ -17,7 +17,7 @@ public class Mute implements SubCommand {
             if(authPlayer.getMember().getVoiceState() == null) return;
             if(!authPlayer.getMember().getVoiceState().inVoiceChannel()) return;
 
-            authPlayer.getMember().mute(true).queue();
+            authPlayer.mute(true);
         }
     }
 

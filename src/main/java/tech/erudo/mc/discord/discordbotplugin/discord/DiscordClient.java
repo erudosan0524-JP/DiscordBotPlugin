@@ -17,7 +17,7 @@ import java.util.List;
 
 public class DiscordClient {
     private JDA jda = null;
-    private Long guildId = null;
+    private final Long guildId;
 
     private final List<Player> speakingPlayers = new ArrayList<>();
 
@@ -38,16 +38,6 @@ public class DiscordClient {
         } catch (LoginException e) {
             e.printStackTrace();
         }
-    }
-
-    public String mute(Player player, boolean muted) {
-        Guild guild = this.getGuild();
-        if(guild == null) {
-            return "ギルドが見つかりませんでした";
-        }
-
-
-        return null;
     }
 
     public boolean isLogin() {
